@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DiaryTrack.MySpashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#00201D</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/diary_logo_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.DiaryTrack</item>
+        <item name="splashScreenIconSize">@dimen/scd_large_100</item>
+    </style>
+</resources>
