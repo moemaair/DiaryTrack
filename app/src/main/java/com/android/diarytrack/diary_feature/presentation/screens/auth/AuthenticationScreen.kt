@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import com.android.diarytrack.util.Constants.CLIENT_ID
 import com.stevdzasan.onetap.OneTapSignInWithGoogle
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -26,7 +27,7 @@ fun AuthenticationScreen(
 
     OneTapSignInWithGoogle(
         state = ,
-        clientId = ,
+        clientId = CLIENT_ID ,
         onTokenIdReceived = {tokenId->
 
         },
