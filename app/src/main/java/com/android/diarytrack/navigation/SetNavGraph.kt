@@ -25,3 +25,7 @@ fun NavGraphBuilder.authenticationRoute(){
 fun NavGraphBuilder.HomeRoute(){
     composable(route = Screen.Home.route){}
 }
+
+fun NavGraphBuilder.WriteRoute(){
+    composable(route = Screen.Write.route){}
+}
