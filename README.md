@@ -3,7 +3,7 @@
   <a href="#"><img alt="Languages-Kotlin" src="https://flat.badgen.net/badge/Language/Kotlin?icon=https://raw.githubusercontent.com/binaryshrey/Awesome-Android-Open-Source-Projects/master/assets/Kotlin_Logo_icon_white.svg&color=f18e33"/></a>
 </p>
 
-<h1 align="center">Lictionary</h1>
+<h1 align="center">DiaryTrack</h1>
 DiaryTrack is an Android application that utilizes a multi-module architecture. It allows users to write a personal diary and add images to it. The app also has the ability to personalize diary entries with dates. The app serves as an electronic version of a traditional diary where users can document their thoughts, memories, and experiences. The use of a multi-module architecture ensures the app is scalable, maintainable, and can be easily extended with new features.
 
 ## Libraries used
