@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.android.diarytrack.diary_feature.presentation.screens.auth.AuthenticationScreen
 import com.android.diarytrack.util.Constants.WRITE_SCREEN_ARGUMENT_KEY
+import com.stevdzasan.messagebar.rememberMessageBarState
 import com.stevdzasan.onetap.rememberOneTapSignInState
 
 @Composable
@@ -25,8 +26,10 @@ fun SetNavGraph(startDestination: String, navController: NavHostController) {
 fun NavGraphBuilder.authenticationRoute(){
     composable(route = Screen.AuthenticationScreen.route){
         val oneTapSignInState = rememberOneTapSignInState()
+        var messageBarState = rememberMessageBarState()
         AuthenticationScreen(
             oneTapSignInState = oneTapSignInState,
+            messageBarState = messageBarState,
             loadingState = oneTapSignInState.opened,
             onButtonClick = {
                         oneTapSignInState.open()

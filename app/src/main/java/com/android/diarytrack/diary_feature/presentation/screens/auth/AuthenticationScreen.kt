@@ -7,6 +7,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import com.android.diarytrack.util.Constants.CLIENT_ID
 import com.stevdzasan.messagebar.ContentWithMessageBar
+import com.stevdzasan.messagebar.MessageBarPosition
 import com.stevdzasan.messagebar.MessageBarState
 import com.stevdzasan.onetap.OneTapSignInState
 import com.stevdzasan.onetap.OneTapSignInWithGoogle
@@ -25,7 +26,7 @@ fun AuthenticationScreen(
     Scaffold(
         content = {
 
-            ContentWithMessageBar(messageBarState = messageBarState) {
+            ContentWithMessageBar(messageBarState = messageBarState, position = MessageBarPosition.BOTTOM) {
                 AuthenticationScreenContent(
                     loadingState = loadingState,
                     onButtonClick = onButtonClick,
@@ -40,11 +41,11 @@ fun AuthenticationScreen(
         state = oneTapSignInState,
         clientId = CLIENT_ID ,
         onTokenIdReceived = {tokenId->
-            Log.d("Auth", tokenId)
+            Log.d("tokenId -> ", tokenId)
             messageBarState.addSuccess("Succefully Authenticated")
         },
         onDialogDismissed = {message->
-            Log.d("Auth", message)
+            Log.d("Auth failed -> ", message)
             messageBarState.addError(Exception(message))
         }
     )
