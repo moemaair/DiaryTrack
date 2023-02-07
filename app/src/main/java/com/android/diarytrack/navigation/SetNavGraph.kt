@@ -13,7 +13,9 @@ fun SetNavGraph(startDestination: String, navController: NavHostController) {
         startDestination = startDestination,
         navController = navController
     ){
-
+        authenticationRoute()
+        HomeRoute()
+        WriteRoute()
     }
 
 }
