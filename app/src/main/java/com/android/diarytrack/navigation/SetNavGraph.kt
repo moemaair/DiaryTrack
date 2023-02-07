@@ -21,3 +21,7 @@ fun SetNavGraph(startDestination: String, navController: NavHostController) {
 fun NavGraphBuilder.authenticationRoute(){
     composable(route = Screen.AuthenticationScreen.route){}
 }
+
+fun NavGraphBuilder.HomeRoute(){
+    composable(route = Screen.Home.route){}
+}
