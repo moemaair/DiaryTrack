@@ -29,11 +29,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             DiaryTrackTheme {
-                Surface(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
-//                    AuthenticationScreen(false, onButtonClick = {})
                     val navController = rememberNavController()
                     SetNavGraph(startDestination = Screen.AuthenticationScreen.route, navController = navController )
-                }
             }
         }
     }

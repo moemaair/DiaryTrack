@@ -44,6 +44,7 @@ fun AuthenticationScreenContent(
                     loadingState = loadingState,
                     onClick = onButtonClick
                 )
+                Spacer(modifier = Modifier.height(30.dp))
             }
         }
     }
