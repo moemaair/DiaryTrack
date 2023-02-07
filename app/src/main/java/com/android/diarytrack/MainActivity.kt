@@ -5,11 +5,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.android.diarytrack.diary_feature.presentation.component.HomeGoogleButtonCustomized
+import com.android.diarytrack.diary_feature.presentation.screens.auth.AuthenticationScreen
 import com.android.diarytrack.ui.theme.DiaryTrackTheme
 
 
@@ -23,7 +26,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             DiaryTrackTheme {
-
+                Surface(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
+                    AuthenticationScreen(false, onButtonClick = {})
+                }
             }
         }
     }
