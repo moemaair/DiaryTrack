@@ -24,8 +24,15 @@ fun SetNavGraph(startDestination: String, navController: NavHostController) {
 
 fun NavGraphBuilder.authenticationRoute(){
     composable(route = Screen.AuthenticationScreen.route){
-        val rememberOneTapSignInState = rememberOneTapSignInState()
-        AuthenticationScreen(loadingState = false, onButtonClick = {})
+        val oneTapSignInState = rememberOneTapSignInState()
+        AuthenticationScreen(
+            oneTapSignInState = oneTapSignInState,
+            loadingState = false,
+            onButtonClick = {
+                        oneTapSignInState.open()
+            },
+
+        )
     }
 }
 
