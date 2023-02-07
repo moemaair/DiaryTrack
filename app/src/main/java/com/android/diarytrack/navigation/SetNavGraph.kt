@@ -1,11 +1,10 @@
 package com.android.diarytrack.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
+import androidx.navigation.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.android.diarytrack.util.Constants.WRITE_SCREEN_ARGUMENT_KEY
 
 @Composable
 fun SetNavGraph(startDestination: String, navController: NavHostController) {
@@ -29,5 +28,11 @@ fun NavGraphBuilder.HomeRoute(){
 }
 
 fun NavGraphBuilder.WriteRoute(){
-    composable(route = Screen.Write.route){}
+    composable(route = Screen.Write.route,
+        arguments = listOf(navArgument(name = WRITE_SCREEN_ARGUMENT_KEY){
+            type = NavType.StringType
+            nullable = true
+            defaultValue = null
+        })
+    ){}
 }
