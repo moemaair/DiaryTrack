@@ -27,7 +27,7 @@ fun NavGraphBuilder.authenticationRoute(){
         val oneTapSignInState = rememberOneTapSignInState()
         AuthenticationScreen(
             oneTapSignInState = oneTapSignInState,
-            loadingState = false,
+            loadingState = oneTapSignInState.opened,
             onButtonClick = {
                         oneTapSignInState.open()
             },

@@ -30,7 +30,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             DiaryTrackTheme {
                     val navController = rememberNavController()
-                    SetNavGraph(startDestination = Screen.AuthenticationScreen.route, navController = navController )
+                    SetNavGraph(startDestination = Screen.AuthenticationScreen.route,
+                        navController = navController )
             }
         }
     }
