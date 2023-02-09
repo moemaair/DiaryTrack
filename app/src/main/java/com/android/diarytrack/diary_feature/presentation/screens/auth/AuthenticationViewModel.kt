@@ -4,4 +4,8 @@ import androidx.lifecycle.ViewModel
 class AuthenticationViewModel : ViewModel(){
     var loadingState = mutableStateOf(false)
         private set
+
+    fun setLoading(loading: Boolean) {
+        loadingState.value = loading
+    }
 }
