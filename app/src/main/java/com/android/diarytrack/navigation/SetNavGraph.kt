@@ -3,6 +3,7 @@ package com.android.diarytrack.navigation
 import AuthenticationViewModel
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.NavHost
@@ -28,14 +29,16 @@ fun SetNavGraph(startDestination: String, navController: NavHostController) {
 fun NavGraphBuilder.authenticationRoute(){
     composable(route = Screen.AuthenticationScreen.route){
         val viewModel:AuthenticationViewModel = viewModel()
+        val loadingState by viewModel.loadingState
         val oneTapSignInState = rememberOneTapSignInState()
         var messageBarState = rememberMessageBarState()
         AuthenticationScreen(
             oneTapSignInState = oneTapSignInState,
             messageBarState = messageBarState,
-            loadingState = oneTapSignInState.opened,
+            loadingState = loadingState,
             onButtonClick = {
                         oneTapSignInState.open()
+                viewModel.setLoading(true)
             },
 
         )
