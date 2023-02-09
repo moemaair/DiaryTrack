@@ -19,7 +19,7 @@ class AuthenticationViewModel : ViewModel(){
 
     fun signInWithMongoAtlas(
         tokenId: String,
-        onSuccess: () -> Unit,
+        onSuccess: (Boolean) -> Unit,
         onError: (Exception) -> Unit
     ){
         viewModelScope.launch {
@@ -31,7 +31,7 @@ class AuthenticationViewModel : ViewModel(){
                 }
                 withContext(Dispatchers.Main) {
                     if (result) {
-                        onSuccess()
+                        onSuccess(result)
                         delay(500)
                     } else {
                         onError(Exception("User is not logged in."))

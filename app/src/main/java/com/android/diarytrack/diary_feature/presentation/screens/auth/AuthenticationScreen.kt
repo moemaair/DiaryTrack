@@ -19,6 +19,8 @@ import java.lang.Exception
 fun AuthenticationScreen(
     oneTapSignInState: OneTapSignInState, // library state for one tap google sign in
     messageBarState: MessageBarState, // library state with predefined data- { Snackbar }
+    onDialogDismissed: (String) -> Unit,
+    onTokenReceived: (String) -> Unit,
     loadingState: Boolean,
     onButtonClick: () -> Unit
 ) {
@@ -41,12 +43,12 @@ fun AuthenticationScreen(
         state = oneTapSignInState,
         clientId = CLIENT_ID ,
         onTokenIdReceived = {tokenId->
-            Log.d("tokenId -> ", tokenId)
-            messageBarState.addSuccess("Succefully Authenticated")
+//            Log.d("tokenId -> ", tokenId)
+//            messageBarState.addSuccess("Succefully Authenticated")
+            onTokenReceived(tokenId)
         },
         onDialogDismissed = {message->
-            Log.d("Auth failed -> ", message)
-            messageBarState.addError(Exception(message))
+            onDialogDismissed(message)
         }
     )
 }
