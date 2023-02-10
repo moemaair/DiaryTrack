@@ -55,11 +55,12 @@ fun NavGraphBuilder.authenticationRoute(
                     onSuccess = { it->
                        if(it){
                            messageBarState.addSuccess("Succefully Authenticated")
-                           viewModel.setLoading(false)
                        }
+                        viewModel.setLoading(false)
                     },
                     onError = { it ->
                         messageBarState.addError(it)
+                        viewModel.setLoading(true)
                     }
                 )
             },
