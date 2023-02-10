@@ -13,7 +13,7 @@ class AuthenticationViewModel : ViewModel(){
     var loadingState = mutableStateOf(false)
         private set
 
-    var authenticate = mutableStateOf(false)
+    var authenticated = mutableStateOf(false)
         private set
 
     fun setLoading(loading: Boolean) {
@@ -36,7 +36,7 @@ class AuthenticationViewModel : ViewModel(){
                     if (result) {
                         onSuccess(result)
                         delay(500)
-                        authenticate.value = true
+                        authenticated.value = true
                     } else {
                         onError(Exception("User is not logged in."))
                     }

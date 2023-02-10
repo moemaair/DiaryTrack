@@ -20,20 +20,29 @@ fun SetNavGraph(startDestination: String, navController: NavHostController) {
         startDestination = startDestination,
         navController = navController
     ){
-        authenticationRoute()
+        authenticationRoute(
+            navigateToHome = {
+                navController.popBackStack()
+                navController.navigate(Screen.Home.route)
+            }
+        )
         HomeRoute()
         WriteRoute()
     }
 
 }
 
-fun NavGraphBuilder.authenticationRoute(){
+fun NavGraphBuilder.authenticationRoute(
+    navigateToHome: () -> Unit
+){
     composable(route = Screen.AuthenticationScreen.route){
         val viewModel:AuthenticationViewModel = viewModel()
         val loadingState by viewModel.loadingState
+        val authenticated by viewModel.authenticated
         val oneTapSignInState = rememberOneTapSignInState()
         var messageBarState = rememberMessageBarState()
         AuthenticationScreen(
+            authenticated = authenticated,
             oneTapSignInState = oneTapSignInState,
             messageBarState = messageBarState,
             loadingState = loadingState,
@@ -47,7 +56,6 @@ fun NavGraphBuilder.authenticationRoute(){
                        if(it){
                            messageBarState.addSuccess("Succefully Authenticated")
                            viewModel.setLoading(false)
-
                        }
                     },
                     onError = { it ->
@@ -59,7 +67,7 @@ fun NavGraphBuilder.authenticationRoute(){
                         oneTapSignInState.open()
                 viewModel.setLoading(true)
             },
-
+            navigateToHome = navigateToHome
         )
     }
 }

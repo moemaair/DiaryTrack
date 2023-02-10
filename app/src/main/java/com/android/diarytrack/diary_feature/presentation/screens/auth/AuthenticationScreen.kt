@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import com.android.diarytrack.util.Constants.CLIENT_ID
 import com.stevdzasan.messagebar.ContentWithMessageBar
 import com.stevdzasan.messagebar.MessageBarPosition
@@ -17,12 +18,14 @@ import java.lang.Exception
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthenticationScreen(
+    authenticated : Boolean,
     oneTapSignInState: OneTapSignInState, // library state for one tap google sign in
     messageBarState: MessageBarState, // library state with predefined data- { Snackbar }
     onDialogDismissed: (String) -> Unit,
     onTokenReceived: (String) -> Unit,
     loadingState: Boolean,
-    onButtonClick: () -> Unit
+    onButtonClick: () -> Unit,
+    navigateToHome: ()-> Unit
 ) {
 
     Scaffold(
@@ -43,12 +46,16 @@ fun AuthenticationScreen(
         state = oneTapSignInState,
         clientId = CLIENT_ID ,
         onTokenIdReceived = {tokenId->
-//            Log.d("tokenId -> ", tokenId)
-//            messageBarState.addSuccess("Succefully Authenticated")
             onTokenReceived(tokenId)
         },
         onDialogDismissed = {message->
             onDialogDismissed(message)
         }
     )
+    LaunchedEffect(key1 = authenticated){
+        if(authenticated){
+            // navigate to homescreen only when authenticate is true
+            navigateToHome()
+        }
+    }
 }
