@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.android.diarytrack.diary_feature.presentation.screens.Home.HomeScreen
 import com.android.diarytrack.diary_feature.presentation.screens.auth.AuthenticationScreen
 import com.android.diarytrack.util.Constants.WRITE_SCREEN_ARGUMENT_KEY
 import com.stevdzasan.messagebar.rememberMessageBarState
@@ -46,6 +47,7 @@ fun NavGraphBuilder.authenticationRoute(){
                        if(it){
                            messageBarState.addSuccess("Succefully Authenticated")
                            viewModel.setLoading(false)
+
                        }
                     },
                     onError = { it ->
@@ -63,7 +65,9 @@ fun NavGraphBuilder.authenticationRoute(){
 }
 
 fun NavGraphBuilder.HomeRoute(){
-    composable(route = Screen.Home.route){}
+    composable(route = Screen.Home.route){
+        HomeScreen()
+    }
 }
 
 fun NavGraphBuilder.WriteRoute(){
