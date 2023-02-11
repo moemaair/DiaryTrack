@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeScreen() {
     val scope = rememberCoroutineScope()
-
     Button(onClick = {
         scope.launch(Dispatchers.IO) {
             App.Companion.create(APP_ID).currentUser?.logOut()
@@ -23,7 +22,4 @@ fun HomeScreen() {
     }) {
         Text(text = "Log out")
     }
-
-
-
 }
