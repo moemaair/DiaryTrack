@@ -26,7 +26,11 @@ fun SetNavGraph(startDestination: String, navController: NavHostController) {
                 navController.navigate(Screen.Home.route)
             }
         )
-        HomeRoute()
+        HomeRoute(
+            navigateToWrite = {
+                navController.navigate(Screen.Write.route)
+            }
+        )
         WriteRoute()
     }
 
@@ -60,12 +64,12 @@ fun NavGraphBuilder.authenticationRoute(
                     },
                     onError = { it ->
                         messageBarState.addError(it)
-                        viewModel.setLoading(true)
+                        viewModel.setLoading(false)
                     }
                 )
             },
             onButtonClick = {
-                        oneTapSignInState.open()
+                oneTapSignInState.open()
                 viewModel.setLoading(true)
             },
             navigateToHome = navigateToHome
@@ -73,7 +77,9 @@ fun NavGraphBuilder.authenticationRoute(
     }
 }
 
-fun NavGraphBuilder.HomeRoute(){
+fun NavGraphBuilder.HomeRoute(
+    navigateToWrite: () -> Unit
+){
     composable(route = Screen.Home.route){
         HomeScreen()
     }
