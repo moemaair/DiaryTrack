@@ -81,7 +81,9 @@ fun NavGraphBuilder.HomeRoute(
     navigateToWrite: () -> Unit
 ){
     composable(route = Screen.Home.route){
-        HomeScreen()
+        HomeScreen(
+            navigateToWriteScreen = navigateToWrite
+        )
     }
 }
 
