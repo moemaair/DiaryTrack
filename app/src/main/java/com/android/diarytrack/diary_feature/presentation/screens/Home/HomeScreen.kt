@@ -19,7 +19,8 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navigateToWriteScreen: () -> Unit
+    navigateToWriteScreen: () -> Unit,
+    onMenuClicked: () -> Unit
 ) {
 
     Scaffold(
@@ -29,7 +30,7 @@ fun HomeScreen(
                     Text(text = "Diary")
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = { onMenuClicked() }) {
                        Icon(imageVector =  Icons.Default.Menu,
                            contentDescription = "Hamburger menu",
                             tint = MaterialTheme.colorScheme.onSurface
