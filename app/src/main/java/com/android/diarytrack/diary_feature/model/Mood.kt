@@ -6,6 +6,5 @@ enum class Mood (
     val icon: Int,
     val containerColor: Color, // rep background of the card header
     val contentColor: Color
-
     ){
 }
