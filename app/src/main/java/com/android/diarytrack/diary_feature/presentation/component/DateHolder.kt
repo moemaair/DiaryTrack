@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import java.time.LocalDate
 
 @Composable
-fun DateHolder(local: LocalDate) {
+fun DateHeader(local: LocalDate) {
     //date
     Row(modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
@@ -40,5 +40,5 @@ fun DateHolder(local: LocalDate) {
 @Preview(showBackground = true)
 @Composable
 fun DiaryHolder1() {
-    DateHolder(local = LocalDate.now())
+    DateHeader(local = LocalDate.now())
 }
