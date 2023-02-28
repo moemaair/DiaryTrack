@@ -21,7 +21,6 @@ fun DiaryHolder(diary: Diary, onClick : (String) -> Unit) {
         mutableStateOf(0.dp)
     }
     val localDensity = LocalDensity.current
-
     Row(modifier =Modifier.clickable { onClick(diary.id.toString()) } )
     {
         // long straight line on left of diary items
@@ -29,7 +28,7 @@ fun DiaryHolder(diary: Diary, onClick : (String) -> Unit) {
             Surface(
                 modifier = Modifier
                     .width(2.dp)
-                    .height(componentHeight + 14.dp ),
+                    .height(componentHeight.value + 14.dp),
                 tonalElevation = com.android.diarytrack.ui.theme.Elevation.Level1
             ) {
                 Surface(
