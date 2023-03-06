@@ -7,7 +7,8 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import com.android.diarytrack.diary_feature.presentation.component.DateHolder
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import java.time.LocalDate
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -17,8 +18,11 @@ fun HomeScreen(
     navigateToWriteScreen: () -> Unit,
     onMenuClicked: () -> Unit
 ) {
+    val coroutineScope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
 
     Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
                 title = {

@@ -35,7 +35,7 @@ fun DiaryHolder(diary: Diary, onClick : (String) -> Unit) {
                     modifier = Modifier
                         .clip(shape = Shapes().medium)
                         .onGloballyPositioned {
-                            componentHeight = with(localDensity) { it.size.height.toDp() }
+                            //componentHeight = with(localDensity) { it.size.height.toDp() }
                         },
                     tonalElevation = com.android.diarytrack.ui.theme.Elevation.Level1
                 ){
