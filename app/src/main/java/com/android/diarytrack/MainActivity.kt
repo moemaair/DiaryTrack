@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
             DiaryTrackTheme {
                     val navController = rememberNavController()
                     SetNavGraph(
-                        startDestination = Screen.Home.route,
+                        startDestination = getStartDestination(),
                         navController = navController
                     )
             }

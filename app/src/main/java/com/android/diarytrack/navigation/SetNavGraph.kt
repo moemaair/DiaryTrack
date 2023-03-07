@@ -4,15 +4,23 @@ import AuthenticationViewModel
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.android.diarytrack.diary_feature.presentation.screens.Home.HomeScreen
 import com.android.diarytrack.diary_feature.presentation.screens.auth.AuthenticationScreen
+import com.android.diarytrack.util.Constants.APP_ID
 import com.android.diarytrack.util.Constants.WRITE_SCREEN_ARGUMENT_KEY
 import com.stevdzasan.messagebar.rememberMessageBarState
 import com.stevdzasan.onetap.rememberOneTapSignInState
+import io.realm.kotlin.mongodb.App
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Composable
 fun SetNavGraph(startDestination: String, navController: NavHostController) {
@@ -28,7 +36,12 @@ fun SetNavGraph(startDestination: String, navController: NavHostController) {
         )
         HomeRoute(
             navigateToWrite = {
+                navController.popBackStack()
                 navController.navigate(Screen.Write.route)
+            },
+            navigateToAuthentication = {
+                navController.popBackStack()
+                navController.navigate(Screen.AuthenticationScreen.route)
             }
         )
         WriteRoute()
@@ -78,12 +91,24 @@ fun NavGraphBuilder.authenticationRoute(
 }
 
 fun NavGraphBuilder.HomeRoute(
-    navigateToWrite: () -> Unit
+    navigateToWrite: () -> Unit,
+    navigateToAuthentication : () -> Unit
 ){
     composable(route = Screen.Home.route){
+        val scope= rememberCoroutineScope()
         HomeScreen(
             navigateToWriteScreen = navigateToWrite,
-            onMenuClicked = {}
+            onMenuClicked = {
+                scope.launch(Dispatchers.IO) {
+                    val user = App.create(APP_ID).currentUser
+                    if (user != null) {
+                        user.logOut()
+                        withContext(Dispatchers.Main){
+                            navigateToAuthentication()
+                        }
+                    }
+                }
+            },
         )
     }
 }

@@ -16,7 +16,7 @@ import java.time.LocalDate
 @Composable
 fun HomeScreen(
     navigateToWriteScreen: () -> Unit,
-    onMenuClicked: () -> Unit
+    onMenuClicked: () -> Unit,
 ) {
     val coroutineScope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
