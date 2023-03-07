@@ -1,8 +1,11 @@
 package com.android.diarytrack.util
 
+import com.android.diarytrack.BuildConfig
+
+
 object Constants {
-    const val APP_ID = "mydiarytrack-qdpgw"
-    const val CLIENT_ID = "307068373982-ebc0pdl155h4kecql1mrsriuriel6top.apps.googleusercontent.com"
+    const val APP_ID = BuildConfig.APP_ID
+    const val CLIENT_ID = BuildConfig.CLIENT_ID
     const val WRITE_SCREEN_ARGUMENT_KEY= "diaryId"
 
 }
